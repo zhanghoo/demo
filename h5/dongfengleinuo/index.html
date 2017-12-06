@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--告诉浏览器准备接受一个 HTML 文档-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1"><!--按照最新浏览器标准渲染-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--设置浏览器视口宽度等于设备屏幕宽度，不进行初始缩放，且用户不可以设置缩放-->
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!--iphone设备中的safari私有meta标签，它表示：允许全屏模式浏览-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!--指定的iphone中safari顶端的状态条的样式-->
+    <meta name="format-detection" content="telephone=no" /><!--告诉设备将页面中的数字识别为电话号码-->
+	<title>东风雷诺</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div class="page-box pa">
+		<div id="page1" class="page pa overhidden">
+			<img src="img/logo.png" class="logo pa">
+			<img src="img/mailbox.png" class="mailbox pa">
+			<ul class="text pa" id="text">
+				<li>很感激喜欢我十年仍不休</li>
+				<li>近日旧同学说我已</li>
+				<li>耿耿于你心，六百周</li>
+				<li>很可惜这一世未能，长厮守</li>
+			</ul>
+			<div class="loading pa">
+				<span class="num" id="loadPerct">0</span>
+				<span class="percent">%</span>
+			</div>
+		</div>
+
+		<div id="page2" class="page pa overhidden">
+			<img src="img/logo.png" class="logo pa">
+			<img src="img/title2.png" class="title2 pa">
+			<img src="img/envelope.png" class="envelope pa">
+			<img src="img/page2-img0.png" class="page2-img0 pa">
+			<img src="img/page2-img1.png" class="page2-img1 pa">
+			<span class="fingerprint pa" id="btn-finger"></span>
+			<img src="img/page2-bottom.png" class="page2-bottom pa">
+		</div>
+
+		<div id="page3" class="page pa overhidden">
+			<img src="img/logo.png" class="logo pa">
+			<div class="erase-box" id="eraseBox3">
+				<img src="img/img-page3-center.jpg" class="bg-erase pa">
+				<canvas id="eraseCanvas3"></canvas>
+			</div>
+			<div class="bottom-box">
+				<img src="img/img-page3-bottom.jpg" class="bg-bottom pa">
+				<img src="img/slide-down.png" class="slide-down pa" id="slideDown3">
+			</div>
+		</div>
+
+		<div id="page4" class="page pa overhidden">
+			<img src="img/logo.png" class="logo pa">
+			<div class="erase-box" id="eraseBox4">
+				<img src="img/img-page4-center.jpg" class="bg-erase pa">
+				<canvas id="eraseCanvas4"></canvas>
+			</div>
+			<div class="bottom-box">
+				<img src="img/img-page4-bottom.jpg" class="bg-bottom pa">
+				<img src="img/slide-down.png" class="slide-down pa" id="slideDown4">
+			</div>
+		</div>
+
+		<div id="page5" class="page pa overhidden">
+			<img src="img/logo.png" class="logo pa">
+			<div class="erase-box" id="eraseBox5">
+				<img src="img/img-page5-center.jpg" class="bg-erase pa">
+				<canvas id="eraseCanvas5"></canvas>
+			</div>
+			<div class="bottom-box">
+				<img src="img/img-page5-bottom.jpg" class="bg-bottom pa">
+				<img src="img/slide-down.png" class="slide-down pa" id="slideDown5">
+			</div>
+		</div>
+
+		<div id="page6" class="page pa overhidden">
+			<img src="img/logo.png" class="logo pa">
+			<div class="img-box">
+				<img src="img/page6-img0.png" class="page6-img0 pa">
+				<img src="img/page6-img1.png" class="page6-img1 pa">
+				<img src="img/page6-img2.png" class="page6-img2 pa">
+				<img src="img/page6-img3.png" class="page6-img3 pa">
+			</div>
+			<img src="img/desc6.png" class="desc6 pa">
+			<img src="img/page6-btn0.png" class="page6-btn page6-btn0 pa">
+			<img src="img/page6-btn1.png" class="page6-btn page6-btn1 pa" id="btn-contect">
+		</div>
+
+		<div id="page7" class="page pa page7">
+			<img src="img/logo.png" class="logo pa">
+			<img src="img/page7-envelope.png" class="page7-envelope pa">
+			<img src="img/close.png" class="close pa" id="btn-close">
+			<div class="input-box pa">
+				<div class="row"><input type="text" placeholder="请填写您的姓名" /></div>
+				<div class="row"><input type="text" placeholder="请填写您的电话" /></div>
+				<div class="row row-2">
+					<select>
+						<option>请选择省份</option>
+						<option>湖南</option>
+					</select>
+					<select>
+						<option>请选择城市</option>
+						<option>长沙</option>
+					</select>
+				</div>
+				<div class="row">
+					<select>
+						<option>请选择所在地经销商</option>
+					</select>
+				</div>
+			</div>
+			<img src="img/page7-btn0.png" class="page7-btn0 pa">
+		</div>
+	</div>
+	<script type="text/javascript">
+		// 去除JQuery Mobile中的默认input样式
+    	$("input").attr('data-role','none');  
+		$("select").attr('data-role','none');
+    </script>
+    <!-- <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script> -->
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
