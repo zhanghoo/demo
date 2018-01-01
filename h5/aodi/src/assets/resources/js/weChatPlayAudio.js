@@ -1,0 +1,1 @@
+var gWxy_audio=null;cc.sys.isNative||document.addEventListener("WeixinJSBridgeReady",function(){(gWxy_audio=document.createElement("audio")).src=cc.url.raw("resources/audio/music_bg.mp3"),gWxy_audio.play(),gWxy_audio.loop="loop"});
