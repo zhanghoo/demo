@@ -7,8 +7,10 @@
 .box {
   position: fixed;
   display: flex;
+  top: 0;
+  left: 0;
   width: 100%;
-  left: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -20,6 +22,34 @@
 }
 .car {
   position: absolute;
+    width: 35px;
+    height: 70px;
+  background: url(images/horizontal-s-car/car.png) no-repeat;
+  background-size: cover;
+  animation: carMove 5s infinite;
+}
+@keyframes carMove
+{
+  0% {
+    top: 39px;
+    left: 16px;
+    transform: rotate(-28deg);
+  }
+  25% {
+    top: -18px;
+    left: 45px;
+    transform: rotate(89deg);
+  }
+  50% {
+    top: 52px;
+    left: 148px;
+    transform: rotate(89deg);
+  }
+  100% {
+    top: -14px;
+    left: 179px;
+    transform: rotate(-28deg);
+  }
 }
 </style>
 </head>
