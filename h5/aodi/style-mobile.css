@@ -141,7 +141,7 @@ p.footer {
   width: 28%;
   height: 8%;
   background: url(route.png) no-repeat center;
-  background-size: 100%;
+  background-size: contain;
 }
 .loading-box .car {
   position: absolute;
