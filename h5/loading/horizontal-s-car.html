@@ -4,8 +4,11 @@
 <meta charset="utf-8">
 <title>horizontal-s-car loading</title>
 <style>
-body {
+.box {
+  position: fixed;
   display: flex;
+  width: 100%;
+  left: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -13,13 +16,15 @@ body {
   position: relative;
   width: 229px;
   height: 105px;
-  background: url(./images/horizontal-s-car/loading.png) no-repeat;
+  background: url(images/horizontal-s-car/bg-loading.png) no-repeat;
 }
 </style>
 </head>
 <body>
-<div class="loading-box">
-  <div class="car"></div>
-</div>
+  <div class="box">
+    <div class="loading-box">
+      <div class="car"></div>
+    </div>
+  </div>
 </body>
 </html>
