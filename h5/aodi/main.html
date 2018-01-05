@@ -85,8 +85,18 @@ function getAngle(x0, y0, x1, y1) {
 }
 
 // text
-const pathPositions = [{'x': 0, 'y': 0}, {'x': 2, 'y': 5}, {'x': 7, 'y': 9}, {'x': 8, 'y': 10}, {'x': 20, 'y': 10}, {'x': 30, 'y': 30}, {'x': 30, 'y': 15}]
-main(pathPositions)
+let textPostions = [],
+    x = 0,
+    y = 0
+for(let i = 0; i < 100; i++) {
+  x += Math.random() * 1000 >= 500 ? 1 : y += Math.random() * 1000 >= 500 ? 1 : 0
+  let pos = {
+    x,
+    y
+  }
+  textPostions.push(pos)
+}
+main(textPostions)
 </script>
 </head>
 <body>
