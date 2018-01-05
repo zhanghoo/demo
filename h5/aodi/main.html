@@ -4,11 +4,15 @@
 <meta charset = "utf-8">
 <title>main</title>
 <script>
+/**
+ * 判断小车在一系列路径中, 某一小段内是否转弯
+ * range 小车当前点原点(起点)x, y的范围值
+ * angle 当移动到下一个边界上时, 小车过来的夹角和即将走向夹角的差值范围值, 如果大于则视作转弯
+ * carBeforeAngle 小车过来的夹角
+ */
 const range = 10,
       angle = 45
-let carX1 = 0, carY1 = 0,
-    carX2 = 0, carY2 = 0,
-    carBeforeAngle = 0
+let carBeforeAngle = 0
 /**
  * main: 主函数
  * @params: pathPositions, 路径点
