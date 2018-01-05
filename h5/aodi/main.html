@@ -4,20 +4,46 @@
 <meta charset = "utf-8">
 <title>main</title>
 <script>
-const pathPositions = [{'x': 0, 'y': 0}, {'x': 2, 'y': 5}, {'x': 7, 'y': 9}, {'x': 8, 'y': 10}, {'x': 20, 'y': 10}, {'x': 30, 'y': 30}, {'x': 30, 'y': 15}]
 const range = 10,
       angle = 45
 let carX1 = 0, carY1 = 0,
     carX2 = 0, carY2 = 0,
     carBeforeAngle = 0
-  
+/**
+ * main: 主函数
+ * @params: pathPositions, 路径点
+ * @return: 无
+ */
 function main(pathPositions) {
+  let originPosition = {},
+      originIndex = 0
   for (index in pathPositions) {
-    console.log(isTurn(pathPositions[index], pathPositions[++index]) ? '转弯' : '不转弯')
+    // originPosition,是原点(起点)位置, 不随循环变化, 所以放在外面
+    // originIndex, 用于保存远点等于循环点序号index, 当循环的index和originIndex相等时, 可以更新得到原点, 用于下一轮
+    let currentPosition = pathPositions[index]
+    if (index == originIndex) {
+      //当前路径检索index == 定的原点, 更新这一轮循环的原点值
+      originPosition = currentPosition
+    }
+    // 下一个点, 不一定是在边界上, 也可能在
+    let nextPosition = pathPositions[++index]
+    // console.log(originPosition, nextPosition)
+    if (!!nextPosition) {
+      //如果不是最后一个点, 由改点的横纵坐标是否有一个在原点range范围内的边界上
+      if ((originPosition.x + range) == nextPosition.x || (originPosition.y + range) == nextPosition.y) {
+        // 在则判断是否转弯
+        console.log(isTurn(originPosition, nextPosition) ? '转弯' : '不转弯')
+        // 移动相应的index
+        originIndex = index
+      }
+    }
   }
 }
-
-// 判断是否转弯
+/**
+ * isTurn: 判断是否转弯
+ * @params: pos0原点, pos1下一个在边界上的点
+ * @params: Boolean 是否转弯
+ */
 function isTurn(pos0, pos1) {
   if (!pos1) {
     // 下一个点不存在, 即为最后一个点, 直接返回
@@ -35,8 +61,12 @@ function isTurn(pos0, pos1) {
     return Math.abs(angle) <= angle ? false : true
   }
 }
-  
-// 得到两点的夹角
+/**
+ * getAngle: 得到两点的夹角
+ * @params: x0,y0, 点一的横纵坐标
+            x1,y1, 点二的横纵坐标
+ * @return: Number, 夹角值
+ */
 function getAngle(x0, y0, x1, y1) {
   // 两点x, y轴线的距离
   const x = Math.abs(x1 - x0)
@@ -49,6 +79,9 @@ function getAngle(x0, y0, x1, y1) {
   const angle = Math.floor(180 / (Math.PI / radian));
   return angle
 }
+
+// text
+const pathPositions = [{'x': 0, 'y': 0}, {'x': 2, 'y': 5}, {'x': 7, 'y': 9}, {'x': 8, 'y': 10}, {'x': 20, 'y': 10}, {'x': 30, 'y': 30}, {'x': 30, 'y': 15}]
 main(pathPositions)
 </script>
 </head>
