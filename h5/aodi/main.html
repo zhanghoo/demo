@@ -5,11 +5,51 @@
 <title>main</title>
 <script>
 const pathPositions = [{'x': 0, 'y': 0}, {'x': 2, 'y': 5}, {'x': 7, 'y': 9}, {'x': 8, 'y': 10}, {'x': 20, 'y': 10}, {'x': 30, 'y': 30}, {'x': 30, 'y': 15}]
-main () {
-  for (pathPosition in pathPositions) {
-    console.log(pathPosition)
+const range = 10,
+      angle = 45
+let carX1 = 0, carY1 = 0,
+    carX2 = 0, carY2 = 0,
+    carBeforeAngle = 0
+  
+function main(pathPositions) {
+  for (index in pathPositions) {
+    console.log(isTurn(pathPositions[index], pathPositions[++index]) ? '转弯' : '不转弯')
   }
 }
+
+// 判断是否转弯
+function isTurn(pos0, pos1) {
+  if (!pos1) {
+    // 下一个点不存在, 即为最后一个点, 直接返回
+    return false
+  }
+  if (carBeforeAngle === 0) {
+    // 没有前一个角度, 即为第一个点
+    // 移动, 用于下一个点的前一个角度
+    carBeforeAngle = getAngle(pos0.x, pos0.y, pos1.x, pos1.y)
+    return false
+  } else {
+    // 当前点的角度, 不是首末两个点
+    let carCurrentAngle = getAngle(pos0.x, pos0.y, pos1.x, pos1.y),
+        angle = carCurrentAngle - carBeforeAngle
+    return Math.abs(angle) <= angle ? false : true
+  }
+}
+  
+// 得到两点的夹角
+function getAngle(x0, y0, x1, y1) {
+  // 两点x, y轴线的距离
+  const x = Math.abs(x1 - x0)
+  const y = Math.abs(y1 - y0)
+  const dis = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+  const cos = y / dis
+  // 反三角函数求弧度
+  const radian = Math.acos(cos)
+  // 将弧度转换成角度
+  const angle = Math.floor(180 / (Math.PI / radian));
+  return angle
+}
+main(pathPositions)
 </script>
 </head>
 <body>
