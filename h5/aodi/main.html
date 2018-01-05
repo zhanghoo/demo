@@ -33,7 +33,7 @@ function main(pathPositions) {
     let nextPosition = pathPositions[++index]
     // console.log(originPosition, nextPosition)
     if (!!nextPosition) {
-      //如果不是最后一个点, 由改点的横纵坐标是否有一个在原点range范围内的边界上
+      //如果不是最后一个点, 且该点的横纵坐标中有一个在原点range范围内的边界上
       if ((originPosition.x + range) == nextPosition.x || (originPosition.y + range) == nextPosition.y) {
         // 在则判断是否转弯
         console.log(isTurn(originPosition, nextPosition) ? '转弯' : '不转弯')
@@ -88,7 +88,7 @@ function getAngle(x0, y0, x1, y1) {
 let textPostions = [],
     x = 0,
     y = 0
-for(let i = 0; i < 100; i++) {
+for(let i = 0; i < 10000; i++) {
   x += Math.random() * 1000 >= 500 ? 1 : y += Math.random() * 1000 >= 500 ? 1 : 0
   let pos = {
     x,
