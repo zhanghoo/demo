@@ -8,10 +8,12 @@
  * 判断小车在一系列路径中, 某一小段内是否转弯
  * range 小车当前点原点(起点)x, y的范围值
  * angle 当移动到下一个边界上时, 小车过来的夹角和即将走向夹角的差值范围值, 如果大于则视作转弯
+ * swingAngle 摆动的角度
  * carBeforeAngle 小车过来的夹角
  */
 const range = 10,
-      angle = 45
+      angle = 20,
+      swingAngle = 30
 let carBeforeAngle = 0
 /**
  * main: 主函数
@@ -20,7 +22,8 @@ let carBeforeAngle = 0
  */
 function main(pathPositions) {
   let originPosition = {},
-      originIndex = 0
+      originIndex = 0,
+      packPathPositions = []
   for (index in pathPositions) {
     // originPosition,是原点(起点)位置, 不随循环变化, 所以放在外面
     // originIndex, 用于保存远点等于循环点序号index, 当循环的index和originIndex相等时, 可以更新得到原点, 用于下一轮
@@ -30,43 +33,79 @@ function main(pathPositions) {
       originPosition = currentPosition
     }
     // 下一个点, 不一定是在边界上, 也可能在
-    let nextPosition = pathPositions[++index]
+    let nextPosition = pathPositions[++index],
+        nextIndex = index
     // console.log(originPosition, nextPosition)
     if (!!nextPosition) {
       //如果不是最后一个点, 且该点的横纵坐标中有一个在原点range范围内的边界上
       if ((originPosition.x + range) == nextPosition.x || (originPosition.y + range) == nextPosition.y) {
-        // 在则判断是否转弯
-        console.log(isTurn(originPosition, nextPosition) ? '转弯' : '不转弯')
+        // 得到原点与其前一点连线和原点与其下一点连线, 两条线之间的夹角
+        let includedAngle = getIncludedAngle(originPosition, nextPosition)
+        if (Math.abs(includedAngle) >= angle) {
+          // 拐弯 是原点到下个边界点的这一段 即路径点 pathPositions[originIndex] 到 pathPositions[nextIndex]
+          // 难理解的是, 要回头去处理已经在最外一层遍历了的位置
+          // 为其添加固定的方向(也可以继续计算这一段, 每个点的方向), 先固定方向吧。以及是否转弯的标志字段
+          // 截取pathPositions路径的一段index是否-1, 影响不大
+          let cutPathPositions = pathPositions.slice(originIndex, nextIndex)
+          for (let index in cutPathPositions) {
+            let cutPathPosition = cutPathPositions[index],
+                x = cutPathPosition.x,
+                y = cutPathPosition.y,
+                cutPackPathPosition = {
+                  x,
+                  y,
+                  swingAngle,
+                  'isTurn': true
+                }
+            packPathPositions.push(cutPackPathPosition)
+          }
+        } else {
+          // 不拐弯
+          let cutPathPositions = pathPositions.slice(originIndex, nextIndex)
+          for (let index in cutPathPositions) {
+            let cutPathPosition = cutPathPositions[index],
+                x = cutPathPosition.x,
+                y = cutPathPosition.y,
+                cutPackPathPosition = {
+                  x,
+                  y,
+                  'swingAngle': 0,
+                  'isTurn': false
+                }
+            packPathPositions.push(cutPackPathPosition)
+          }
+        }
         // 移动相应的index
-        originIndex = index
+        originIndex = nextIndex
       }
     }
   }
+  // 包装后的路径
+  console.log(packPathPositions)
 }
 /**
- * isTurn: 判断是否转弯
+ * getIncludedAngle: 判断是否转弯
  * @params: pos0原点, pos1下一个在边界上的点
- * @params: Boolean 是否转弯
+ * @params: angle
  */
-function isTurn(pos0, pos1) {
+function getIncludedAngle(pos0, pos1) {
   if (!pos1) {
     // 下一个点不存在, 即为最后一个点, 直接返回
-    return false
+    return 0
   }
   if (carBeforeAngle === 0) {
     // 没有前一个角度, 即为第一个点
     // 移动, 用于下一个点的前一个角度
     carBeforeAngle = getAngle(pos0.x, pos0.y, pos1.x, pos1.y)
-    return false
+    return 0
   } else {
     // 当前点的角度, 不是首末两个点
-    let carCurrentAngle = getAngle(pos0.x, pos0.y, pos1.x, pos1.y),
-        angle = carCurrentAngle - carBeforeAngle
-    return Math.abs(angle) <= angle ? false : true
+    let carCurrentAngle = getAngle(pos0.x, pos0.y, pos1.x, pos1.y)
+    return carCurrentAngle - carBeforeAngle
   }
 }
 /**
- * getAngle: 得到两点的夹角
+ * getAngle: 得到两点的角度
  * @params: x0,y0, 点一的横纵坐标
             x1,y1, 点二的横纵坐标
  * @return: Number, 夹角值
@@ -89,7 +128,8 @@ let textPostions = [],
     x = 0,
     y = 0
 for(let i = 0; i < 10000; i++) {
-  x += Math.random() * 1000 >= 500 ? 1 : y += Math.random() * 1000 >= 500 ? 1 : 0
+  x += Math.random() * 1000 >= 500 ? 1 : 0
+  y += Math.random() * 1000 >= 500 ? 1 : 0
   let pos = {
     x,
     y
