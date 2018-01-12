@@ -57,6 +57,7 @@
         function setLoadingDisplay () {
             // Loading splash scene
             var splash = document.getElementById('splash');
+            var loadingBg = splash.querySelector('.loading-bg');
             var loadingText = splash.querySelector('.loading-text');
             var progressBar = splash.querySelector('.progress-bar span');
             cc.loader.onProgress = function (completedCount, totalCount, item) {
@@ -69,7 +70,11 @@
             splash.style.display = 'block';
             progressBar.style.width = '0%';
             loadingText.innerHTML = '0%';
-
+            /*start set bg transform*/
+            loadingBg.style.transform="scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  " ;
+            loadingBg.style.msTransform="scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
+            loadingBg.style.WebkitTransform="scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
+            /*end set bg transform*/
             cc.director.once(cc.Director.EVENT_AFTER_SCENE_LAUNCH, function () {
                 // splash.style.display = 'none';
             });
