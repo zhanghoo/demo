@@ -87,7 +87,6 @@ canvas {
   -webkit-transform: translate(-50%,-50%);
   font-family: Allura;
   color: #8E8E8E;
-  font-size: 20px;
 }
 .progress-bar {
   position: absolute;
