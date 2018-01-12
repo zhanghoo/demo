@@ -53,12 +53,22 @@
 <body>
   <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
   <div id="splash">
-    <img class="loading-bg" src="http://file.ih5.cn/v3/files/2246112/20171122/848fee9f.gif">
+    <img id="loadingBg" class="loading-bg" src="http://file.ih5.cn/v3/files/2246112/20171122/848fee9f.gif">
     <div class="loading-text"></div>
     <div class="progress-bar stripes">
       <span></span>
     </div>
   </div>
+  <script>
+    /*start set bg transform*/
+    var loadingBg = document.getElementById("loadingBg");
+    if (loadingBg) {
+      loadingBg.style.transform="translate(-50%,-50%) scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  " ;
+      loadingBg.style.msTransform="translate(-50%,-50%) scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
+      loadingBg.style.WebkitTransform="translate(-50%,-50%) scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
+    }
+    /*end set bg transform*/
+  </script>
 <script src="src/settings.js" charset="utf-8"></script>
 
 <script src="main.js" charset="utf-8"></script>
