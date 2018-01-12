@@ -71,7 +71,7 @@
             progressBar.style.width = '0%';
             loadingText.innerHTML = '0%';
             cc.director.once(cc.Director.EVENT_AFTER_SCENE_LAUNCH, function () {
-                // splash.style.display = 'none';
+                splash.style.display = 'none';
             });
         }
 
