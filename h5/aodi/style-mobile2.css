@@ -66,6 +66,7 @@ canvas {
   background-color: rgba(0, 0, 0, 0);
 }
 #splash {
+  position: relative;
   display: none;
   width: 100%;
   height: 100%;
@@ -92,18 +93,19 @@ canvas {
   position: absolute;
   top: 55%;
   left: 50%;
-  height: 1px;
   width: 70%;
+  height: 1px;
   transform: translate(-50%,-50%);
 }
 .progress-bar span {
   position: relative;
+  display: block;
+  width: 0%;
   height: 100%;
-  background: #909090;
   border-radius: 1px;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
-  width: 0%;
+  background: #909090;
   background-color: #909090;
 }
 
