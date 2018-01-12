@@ -71,9 +71,9 @@
             progressBar.style.width = '0%';
             loadingText.innerHTML = '0%';
             /*start set bg transform*/
-            loadingBg.style.transform="scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  " ;
-            loadingBg.style.msTransform="scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
-            loadingBg.style.WebkitTransform="scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
+            loadingBg.style.transform="translate(-50%,-50%) scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  " ;
+            loadingBg.style.msTransform="translate(-50%,-50%) scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
+            loadingBg.style.WebkitTransform="translate(-50%,-50%) scale(" + window.innerWidth/640 + ',' + window.innerHeight/1040 + ")  ";
             /*end set bg transform*/
             cc.director.once(cc.Director.EVENT_AFTER_SCENE_LAUNCH, function () {
                 // splash.style.display = 'none';
