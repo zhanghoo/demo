@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>春节回家了解一下</title>
+
+  <!--http://www.html5rocks.com/en/mobile/mobifying/-->
+  <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+
+  <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- force webkit on 360 -->
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <!-- force edge on IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- force full screen on some browser -->
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  
+  <!-- force screen orientation on some browser -->
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+
+  <!--fix fireball/issues/3568 -->
+  <!--<meta name="browsermode" content="application">-->
+  <meta name="x5-page-mode" content="app">
+
+  <!--<link rel="apple-touch-icon" href=".png" />-->
+  <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+
+  <link rel="stylesheet" type="text/css" href="style-mobile.css"/>
+  <script src="./dist/jquery-1.10.1.min.js"></script>
+ <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://www.dongfeng-renault.net/api/"></script>
+</head>
+<body>
+  <video id="cVideo" 
+        playsinline  
+        webkit-playsinline="true" 
+        x5-video-player-type="h5" 
+        x5-video-player-fullscreen="true" 
+        x5-video-orientation="landscape" 
+        preload="auto">
+  <source src="./video/mov_bbb.mp4" type="video/mp4">
+</video>
+  <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+  <div id="splash">
+    <img id="bgTop" class="bg-top" src="./img/bgLoadingTop.png">
+    <img class="bgLoadingBottom" src="./img/bgLoadingBottom.png">
+    <div id="loadingBox" class="loading-box">
+      <div class="loading-animat">
+        <div class="text-box">
+          <!-- <span class="text text0"></span>
+          <span class="text text1"></span>
+          <span class="text text2"></span>
+          <span class="text text3"></span>
+          <span class="text text4"></span>
+          <span id="text5" class="text text5"></span> -->
+          <span id="text5" class="text text6"></span>
+        </div>
+        <div class="city"></div>
+        <div class="car-box">
+          <span class="wheel l"></span>
+          <span class="wheel r"></span>
+        </div>
+      </div>
+    </div>
+    <img class="bgLoadingTopCover" src="./img/bgLoadingTopCover.png">
+    <div class="loading-box">
+      <div id="loadingText" class="loading-text">0%</div>
+    </div>
+  </div>
+  <div id="btnMusic">
+    <img id="imgMusic" src="./img/musicOpen.png">
+    <audio src="./video/FadeAway.mp3" loop id='cAudio'></audio>
+  </div>
+  <script type="text/javascript">
+var client_w = $(window).width();
+var client_h = $(window).height();
+//图片加载后设置loadingbox的高
+var bgLoadingTopW = 579;
+var bgLoadingTopH = 1091;
+var psdW = 750
+var bgLoadingTopViewW = client_w * bgLoadingTopW / psdW;
+var bgLoadingTopViewH = bgLoadingTopH * bgLoadingTopViewW / bgLoadingTopW;
+$('.loading-box').height(Math.round(bgLoadingTopViewH) + 'px')
+$('#loadingText').css('lineHeight', Math.round(bgLoadingTopViewH * 0.1108) + 'px')
+
+$('#bgTop').on('load', function() {
+  $('.loading-box').height($('#bgTop').height())
+  $('#loadingText').css('lineHeight', $('#loadingText').height() + 'px')
+})
+</script> 
+<script src="src/settings.js" charset="utf-8"></script>
+
+<script src="main.js" charset="utf-8"></script>
+<script type="text/javascript">
+wx.ready(function(){
+    wx.onMenuShareTimeline({
+    "title":"春节回家了解一下",
+    "imgUrl":"http://www.dongfeng-renault.net/hjgn/img/wechat.jpg",
+    "link":"http://www.dongfeng-renault.net/hjgn/index.html"
+  });
+    wx.onMenuShareAppMessage({
+    "title":"春节回家了解一下",
+    "desc":"大型福利领取现场",
+    "imgUrl":"http://www.dongfeng-renault.net/hjgn/img/wechat.jpg",
+    "link":"http://www.dongfeng-renault.net/hjgn/index.html"
+  });
+});
+
+var btnMusic = document.getElementById('btnMusic');
+
+var cAudio = document.getElementById('cAudio');
+cAudio.style.display = 'block';
+cAudio.play();
+document.addEventListener("WeixinJSBridgeReady", function () {
+    cAudio.play();
+}, false);
+
+
+btnMusic.addEventListener("click", function () {
+  var imgMusic = document.getElementById('imgMusic');
+  if(cAudio.paused) {
+    cAudio.play();
+    imgMusic.src = './img/musicOpen.png';
+  } else {
+    cAudio.pause();
+    imgMusic.src = './img/musicClose.png';
+  }
+});
+
+</script>
+</body>
+</html>
