@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>冬奥 就缺你这01招</title>
+
+  <!--http://www.html5rocks.com/en/mobile/mobifying/-->
+  <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+
+  <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- force webkit on 360 -->
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <!-- force edge on IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- force full screen on some browser -->
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  
+  <!-- force screen orientation on some browser -->
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+
+  <!--fix fireball/issues/3568 -->
+  <!--<meta name="browsermode" content="application">-->
+  <meta name="x5-page-mode" content="app">
+
+  <!--<link rel="apple-touch-icon" href=".png" />-->
+  <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+
+  <link rel="stylesheet" type="text/css" href="style-mobile.css"/>
+  
+  <script src="./dist/jquery/jquery-1.10.1.min.js"></script>
+  
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script src="http://www.skyengine.cn/wx-sdk-api/index.php?a=olympics"></script><!--  -->
+</head>
+<body>
+  <audio src="./resource/audio/bg.mp3" loop id="audioBg"></audio>
+  <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+  <!-- <div id="firstStart">
+    <img class="btnStart" src="./img/btnStart.png" />
+  </div> -->
+  <div id="splash">
+    <div class="loadingDesc">
+      <img class="imgLoadingText" src="./img/imgLoadingText.png">
+      <span class="cover cover-0"></span>
+      <span class="cover cover-1"></span>
+      <span class="cover cover-2"></span>
+      <span class="cover cover-3"></span>
+      <span class="cover cover-4"></span>
+    </div>
+    <div id="loadingText" class="loading-text">0%</div>
+    <img class="imgOrientation" src="./img/imgOrientation.png">
+  </div>
+  <div class="musicControl">
+    <img class="img" src="./img/btnMusicOpen.png">
+  </div>
+  <div class="bigCover">
+    <img class="imgOrientation2" src="./img/imgOrientation2.png">
+  </div>
+<script src="index.js" charset="utf-8"></script>
+<script src="src/settings.js" charset="utf-8"></script>
+
+<script src="main.js" charset="utf-8"></script>
+</body>
+</html>

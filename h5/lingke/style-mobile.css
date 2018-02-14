@@ -1,0 +1,218 @@
+html {
+  -ms-touch-action: none;
+}
+
+body, canvas, div {
+  display: block;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Remove spin of input type number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0;
+
+  cursor: default;
+  color: #888;
+  background-color: #333;
+
+  text-align: center;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#Cocos2dGameContainer {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  left: 0px;
+  top: 0px;
+
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+}
+
+canvas {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+a:link, a:visited {
+  color: #666;
+}
+
+a:active, a:hover {
+  color: #666;
+}
+
+p.header {
+  font-size: small;
+}
+
+p.footer {
+  font-size: x-small;
+}
+
+#firstStart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.btnStart {
+  position: absolute;
+  bottom: 11.2%;
+  left: 43.1%;
+  width: 13.8%;
+  height: auto;
+}
+
+#splash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  background-size: 40%;
+}
+
+.loadingDesc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.loadingDesc .imgLoadingText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cover {
+  display: block;
+  position: absolute;
+  background: #000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  opacity: 1;
+}
+.cover.show {
+  animation: cover 0.1s linear;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+}
+.cover.cover-0 {
+  top: 0;
+}
+.cover.cover-1 {
+  top: 20%;
+}
+.cover.cover-2 {
+  top: 40%;
+}
+.cover.cover-3 {
+  top: 60%;
+}
+.cover.cover-4 {
+  top: 80%;
+}
+
+@keyframes cover {
+  0 {opacity: 1;} 100% {opacity: 0;}
+}
+
+.loading-text {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: #ff6472;
+}
+
+#splash.end .imgOrientation{
+  display: block;
+}
+.imgOrientation {
+  display: none;
+  position: absolute;
+  bottom: 5.8%;
+  left: 45.4%;
+  width: 9.2%;
+  height: auto;
+}
+.bigCover {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.bigCover.firstHped.loaded {
+  display: block;
+}
+.musicControl {
+  display: none;
+  position: absolute;
+  top: 3.68%;
+  right: 2.54%;
+  width: 6.9%;
+  height: auto;
+}
+.musicControl .img {
+  width: 100%;
+}
+.imgOrientation2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18%;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+}
+@media screen and (orientation: landscape) {
+  #splash.end .imgOrientation {
+    display: none;
+  }
+  .bigCover.firstHped.loaded {
+    display: none;
+  }
+  .musicControl {
+    width: 3.9%;
+  }
+}
