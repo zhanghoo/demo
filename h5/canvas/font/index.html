@@ -17,7 +17,7 @@ canvas {
 </style>
 </head>
 <body>
-<input type="button" onclick="drawText" value="demo">
+<input type="button" onclick="drawText()" value="demo">
 <canvas id="canvas" width="800" height="800"></canvas>
 <script>
 function drawText() {
@@ -38,13 +38,14 @@ function drawText() {
    * font-size: 文字大小
    * font-family: 字体样式
    */  
+  
   ctx.font="oblique small-caps bold 40px Allura";
   
-  cxt.fillStyle = "blue";
-  cxt.fillText("Hello Canvas!" ,100, 100, 200);
+  ctx.fillStyle = "blue";
+  ctx.fillText("Hello Canvas!" ,100, 100, 200);
 
-  cxt.strokeStyle = 'blue';    
-  cxt.strokeText("Hello Canvas!", 100, 300, 200);
+  ctx.strokeStyle = 'blue';    
+  ctx.strokeText("Hello Canvas!", 100, 300, 200);
 }
 </script>
 </body>
