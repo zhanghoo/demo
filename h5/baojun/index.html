@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <title>2018广州，宝骏530，与你同型</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=0.5000,maximum-scale=0.5000, initial-scale=0.5000, user-scalable=no" name="viewport" servergenerated="true">
+  <!-- <meta name="viewport" id="viewport" content="width=1080, minimum-scale=1, initial-scale=1"> -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="aplus-xplug" content="NONE">
+  <meta name="spm-id" content="a21bo">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" type="text/css" href="./dist/swiper/swiper.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+  <script src="./dist/jquery/jquery-1.10.1.min.js"></script>
+  <script src="./dist/swiper/swiper.min.js"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script src="http://www.skyengine.cn/wx-sdk-api/index.php?a=bj530"></script>
+</head>
+<body class="mobile">
+
+<audio src="./resource/audio/bg.mp3" loop id="audioBg"></audio>
+
+<div id="pageLoading" class="page page0 pa">
+  <img class="img imgLoading imgLoading0 pa" src="./img/imgLoading0.png">
+  <img id="imgLoading1" class="img imgLoading imgLoading1 pa" src="./img/imgLoading1.png">
+  <div id="loadingText" class="imgLoading pa">
+    <p id="loadText" class="loadingText pa">0</p>
+  </div>
+</div>
+
+<div id="pageB" class="page page-b pa"></div>
+
+<div id="pageIndex" class="page page1 pa">
+  <img class="img imgLogo pa" src="./img/imgLogo.png">
+  <img class="img imgDesc pa" src="./img/imgDesc.png">
+  <img class="img imgCar pa" src="./img/imgCar.png">
+  <img id="btnEnter" class="img btnEnter pa" src="./img/btnEnter.png">
+</div>
+
+<div id="pageShow" class="page page2 pa">
+  <div class="btnMusic pa">
+    <img id="btnMusic" class="img imgMusic pa open" src="./img/imgMusicOpen.png">
+  </div>
+  <div class="swiper-container">
+    <div class="parallax-bg" style="background-image:url(./img/bgMain.jpg)" data-swiper-parallax="-66.6666%"></div>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="showBox pa">
+          <img class="img imgHead pa" src="./img/imgHead1.png">
+          <img class="img imgShow pa" src="./img/imgShow1.png">
+          <img id="btnClickFind1" data-index="1" class="img btnClickFind pa" src="./img/btnClickFind.png">
+          <img class="img imgTip0 pa" src="./img/imgTip0.png">
+          <div class="imgHandBox pa">
+            <span class="circle pa"></span>
+            <img class="img imgHand pa" src="./img/imgHand.png">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="showBox pa">
+          <img class="img imgHead pa" src="./img/imgHead2.png">
+          <img class="img imgShow pa" src="./img/imgShow2.png">
+          <img id="btnClickFind2" data-index="2" class="img btnClickFind pa" src="./img/btnClickFind.png">
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="showBox pa">
+          <img class="img imgHead pa" src="./img/imgHead3.png">
+          <img class="img imgShow pa" src="./img/imgShow3.png">
+          <img id="btnClickFind3" data-index="3" class="img btnClickFind pa" src="./img/btnClickFind.png">
+          <img id="btnGo" class="img btnGo pa" src="./img/btnGo.png">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="showDetailBox" class="showDetailBox pa">
+    <div class="bgShowOpen pa">
+      <div id="ani1" class="ani1 pa"></div>
+    </div>
+    <div id="bgShow" class="bgShow pa">
+      <img id="bgShowImg" class="img bgShowImg pa" src="./img/bgShow1.jpg">
+      <div id="btnClose" class="btnClose pa"></div>
+    </div>
+  </div>
+</div>
+
+<div id="pagePreview" class="page page3 pa">
+  <div class="cropCoverBox pa">
+    <img id="bgCrop" class="img bgCrop pa" src="./img/bgCrop.png">
+  </div>
+  <img id="imgUpload" class="img btnUpload pa" src="./img/btnUpload.png">
+  <input type="file" id="inputUpload" class="btnUpload pa input" accept=".jpg,.jpeg,.png,.gif,.bmp">
+  <img id="btnOk" class="img btnOk pa" src="./img/btnOk.png">
+</div>
+
+<div id="pageCrop" class="page page4 pa"></div>
+  
+<script>
+wx.ready(function(){
+  var audioBg = document.getElementById('audioBg');
+  audioBg.play();
+  audioBg.pause();
+});
+document.body.addEventListener('touchmove' , function(e){
+  e.preventDefault();
+})
+new Swiper('.swiper-container', {
+  speed: 600,
+  parallax: true,
+  watchOverflow: true
+});
+</script>
+<script src="./dist/alloycrop/transform.js"></script>
+<script src="./dist/alloycrop/alloy-finger.js"></script>
+<script src="./js/alloy-crop.js"></script>
+<script src="./js/main.js"></script>
+
+</body>
+</html>
